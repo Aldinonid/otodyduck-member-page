@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-  a {
+  .link {
     text-decoration: none;
     color: #101b52;
 
@@ -32,10 +32,10 @@ const Card = styled.div`
   }
 `;
 
-const ClassCard = () => {
+const ClassCard = (props) => {
   return (
     <Card>
-      <a href="/">
+      <a href={`/course/1`} className="link">
         <div className="thumbnail">
           <img
             src="https://lh3.googleusercontent.com/proxy/mDvnAYX2i0fyKlniTTkGY4VnpgNXlBCotu-f-AziRQWY2xmqBIQVT_83nKPXr6tmTH_tshaMgC2TDBl4AeJaX2nfVQqbZZIYilH0urj9WyXvFBKzPjAV"

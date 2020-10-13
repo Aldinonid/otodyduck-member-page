@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Register, Login, MainApp } from "../../containers/pages";
+import { Register, Login, MainApp, Course } from "../../containers/pages";
 
 const Routes = () => {
   return (
@@ -14,7 +14,11 @@ const Routes = () => {
           <Login />
         </Route>
 
-        <Route path="/">
+        <Route path="/course/:class">
+          <Course />
+        </Route>
+
+        <Route exact path="/">
           <MainApp />
         </Route>
       </Switch>

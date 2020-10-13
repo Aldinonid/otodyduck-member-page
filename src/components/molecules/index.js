@@ -1,4 +1,5 @@
 import Sidebar from "./Sidebar";
-import ClassCard from "../molecules/ClassCard";
+import ClassCard from "./ClassCard";
+import SidebarClass from "./SidebarClass";
 
-export { Sidebar, ClassCard };
+export { Sidebar, ClassCard, SidebarClass };
