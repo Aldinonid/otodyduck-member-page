@@ -38,7 +38,7 @@ const Sidebar = ({ match }) => {
             rel="noopener noreferrer"
             className="nav-link"
           >
-            Library
+            All Class
           </a>
         </li>
         <li>
