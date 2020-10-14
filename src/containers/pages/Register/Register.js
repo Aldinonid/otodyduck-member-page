@@ -12,7 +12,12 @@ const RegisterWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  & .title > span > a .sub-title {
+  & .title {
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  & .sub-title {
     color: #b0b0b0;
     font-size: 18px;
   }
