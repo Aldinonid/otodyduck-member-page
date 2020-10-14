@@ -10,6 +10,7 @@ const InputField = styled.input`
   padding: 12px 24px;
   border: 1px solid #101b52;
   font-size: 16px;
+  border-radius: 5px;
 
   &.error {
     border-color: #ff3434;

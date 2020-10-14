@@ -18,6 +18,7 @@ const SelectWrapper = styled.div`
   border: 1px solid #101b52;
   padding: 12px 16px;
   width: 100%;
+  border-radius: 5px;
 
   &.active {
     border-color: #30c8d6;
