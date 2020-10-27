@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "assets/images/img-class-1.jpg";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -37,11 +38,7 @@ const ClassCard = (props) => {
     <Card>
       <a href={`/course/1`} className="link">
         <div className="thumbnail">
-          <img
-            src="https://lh3.googleusercontent.com/proxy/mDvnAYX2i0fyKlniTTkGY4VnpgNXlBCotu-f-AziRQWY2xmqBIQVT_83nKPXr6tmTH_tshaMgC2TDBl4AeJaX2nfVQqbZZIYilH0urj9WyXvFBKzPjAV"
-            alt="kelas"
-            className="img img-cover"
-          />
+          <img src={Image} alt="kelas" className="img img-cover" />
         </div>
         <h1>React JS</h1>
         <p className="sub-title">Aldino Efendi</p>

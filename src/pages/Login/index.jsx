@@ -29,7 +29,10 @@ const Login = () => {
 
           <Gap height={48} />
 
-          <Button type="submit">Login My Account</Button>
+          <Button>
+            <Link to="/my-class">Login My Account</Link>
+          </Button>
+          {/* <Button type="submit">Login My Account</Button> */}
         </form>
         <Gap height={30} />
         <LinkToRegister>

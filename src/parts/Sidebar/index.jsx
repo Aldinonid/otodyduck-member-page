@@ -4,15 +4,10 @@ import { SidebarWrapper, AvatarFrame, MainMenu, Footer } from "./Sidebar";
 
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ match }) => {
-  console.log(match);
-
-  // const logout = () => {
-  //   users.logout().then(() => {
-  //     localStorage.removeItem("OTODYDUCK:token");
-  //     history.push("/login")
-  //   })
-  // }
+const Sidebar = (props) => {
+  const getNavLinkClass = (path) => {
+    return props.location.pathname === path ? "active" : "";
+  };
 
   return (
     <SidebarWrapper>
@@ -27,10 +22,23 @@ const Sidebar = ({ match }) => {
       <Gap height={50} />
       <MainMenu>
         <li>
-          <Link to="/" className="nav-link">
+          <Link
+            to="/my-progress"
+            className={`nav-link ${getNavLinkClass("/my-progress")}`}
+          >
+            My Progress
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            to="/my-class"
+            className={`nav-link ${getNavLinkClass("/my-class")}`}
+          >
             My Class
           </Link>
         </li>
+
         <li>
           <a
             href={`${process.env.REACT_APP_FRONTPAGE_URL}/class`}
@@ -38,16 +46,15 @@ const Sidebar = ({ match }) => {
             rel="noopener noreferrer"
             className="nav-link"
           >
-            All Class
+            Class Catalog
           </a>
         </li>
+
         <li>
-          <Link to="/transaction" className="nav-link">
-            Transaction
-          </Link>
-        </li>
-        <li>
-          <Link to="/settings" className="nav-link">
+          <Link
+            to="/settings"
+            className={`nav-link ${getNavLinkClass("/settings")}`}
+          >
             Settings
           </Link>
         </li>

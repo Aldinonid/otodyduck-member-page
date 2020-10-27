@@ -70,7 +70,7 @@ const SidebarClass = (props) => {
   return (
     <SidebarWrapper>
       <Gap height={32} />
-      <Link to="/" className="back-home">
+      <Link to="/my-class" className="back-home">
         Back to Home
       </Link>
       <Gap height={32} />
@@ -79,7 +79,7 @@ const SidebarClass = (props) => {
           <span className="course course-header">Chapter Name</span>
         </li>
         <li>
-          <Link to="/course/1/1/1" className="course course-item">
+          <Link to="/course/1/1/1" className="course course-item active">
             Lesson Name
           </Link>
         </li>

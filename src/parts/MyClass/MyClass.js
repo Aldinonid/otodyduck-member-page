@@ -15,10 +15,12 @@ const MyClassWrapper = styled.section`
 `;
 
 const CardList = styled.div`
-  display: grid;
-  column-gap: 20px;
-  row-gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+
+  > div {
+    margin: 10px 20px;
+  }
 `;
 
 export { MyClassWrapper, CardList };

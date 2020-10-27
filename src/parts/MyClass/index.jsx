@@ -10,10 +10,6 @@ const MyClass = () => {
       <Gap height={20} />
       <CardList>
         <ClassCard />
-        <ClassCard />
-        <ClassCard />
-        <ClassCard />
-        <ClassCard />
       </CardList>
     </MyClassWrapper>
   );
