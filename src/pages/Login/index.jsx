@@ -23,7 +23,7 @@ const Login = ({ history }) => {
     users
       .login({ email: Email, password: Password })
       .then((res) => {
-        setAuthorizationHeader(res.data.data.token);
+        setAuthorizationHeader(res.data.token);
 
         users.details().then((detail) => {
           dispatch(populateProfile(detail.data));
@@ -36,13 +36,13 @@ const Login = ({ history }) => {
 
           localStorage.setItem(
             "OTODYDUCK:token",
-            JSON.stringify({ ...res.data.data, email: Email })
+            JSON.stringify({ ...res.data, email: Email })
           );
 
           const redirect = localStorage.getItem("OTODYDUCK:redirect");
           const userCookie = {
-            name: detail.data.data.name,
-            thumbnail: detail.data.data.avatar,
+            name: detail.data.name,
+            thumbnail: detail.data.avatar,
           };
 
           const expires = new Date(

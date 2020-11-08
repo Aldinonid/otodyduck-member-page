@@ -24,6 +24,18 @@ const Wrapper = styled.section`
   a:hover {
     background-color: #40dfed;
   }
+
+  button {
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: #30c8d6;
+    transition-property: all;
+    transition-duration: 200ms;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 5px;
+  }
 `;
 
 export { Wrapper };

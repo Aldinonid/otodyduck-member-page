@@ -15,8 +15,10 @@ import {
   // CoursePage,
   MyProgressPage,
   SettingsPage,
-  NotFound,
+  Joined,
   Unauthenticated,
+  NotFound,
+  // ServerError,
 } from "./pages";
 
 function App() {
@@ -44,18 +46,13 @@ function App() {
           <GuestRoute path="/private" component={Unauthenticated} />
 
           <MemberRoute exact path="/" component={MyClassPage} />
-          <Route path="/my-progress" component={MyProgressPage} />
-          <Route path="/settings" component={SettingsPage} />
+          <MemberRoute path="/joined/:class" component={Joined} />
+          <MemberRoute path="/my-progress" component={MyProgressPage} />
+          <MemberRoute path="/settings" component={SettingsPage} />
 
           <Route path="*" component={NotFound} />
         </Switch>
       </Router>
-      {/* <Router>
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/my-class" component={MyClassPage} />
-        <Route path="/course/:class" component={CoursePage} />
-      </Router> */}
     </>
   );
 }
