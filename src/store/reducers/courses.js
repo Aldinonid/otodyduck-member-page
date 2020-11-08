@@ -32,11 +32,11 @@ export default function (state = initialState, action) {
         status: "ok",
       };
 
-    // case WATCH_COURSE:
-    //   return {
-    //     ...state,
-    //     status: action.payload
-    //   }
+    case WATCH_COURSE:
+      return {
+        ...state,
+        status: action.payload,
+      };
 
     case MESSAGE_COURSE:
       return {
