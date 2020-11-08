@@ -20,8 +20,8 @@ const Select = ({
     setToggle(() => !Toggle);
   }
 
-  function clickOutside(event) {
-    if (selectWrapper && !selectWrapper.current.contains(event.target)) {
+  function clickOutside(e) {
+    if (selectWrapper && !selectWrapper.current.contains(e.target)) {
       setToggle(false);
     }
   }
@@ -29,7 +29,7 @@ const Select = ({
   useEffect(() => {
     window.addEventListener("mousedown", clickOutside);
     return () => {
-      window.addEventListener("mousedown", clickOutside);
+      window.removeEventListener("mousedown", clickOutside);
     };
   }, []);
 

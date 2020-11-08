@@ -3,6 +3,10 @@ import styled from "styled-components";
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  > .error {
+    color: #ff3434;
+  }
 `;
 
 const InputField = styled.input`

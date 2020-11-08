@@ -1,23 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
+
 import { Avatar, Gap } from "components";
 import { SidebarWrapper, AvatarFrame, MainMenu, Footer } from "./Sidebar";
 
-import { Link } from "react-router-dom";
-
-const Sidebar = (props) => {
+const Sidebar = ({ history, match }) => {
+  const user = useSelector((state) => state.users);
   const getNavLinkClass = (path) => {
-    return props.location.pathname === path ? "active" : "";
+    return match?.path === path ? "active" : "";
   };
+
+  function logout(e) {
+    e.preventDefault();
+    history.push("/login");
+  }
 
   return (
     <SidebarWrapper>
       <Gap height={32} />
       <AvatarFrame>
         <div className="frame">
-          <Avatar />
+          <Avatar user={user} />
         </div>
-        <h3>Aldino Efendi</h3>
-        <p>Frontend Developer</p>
+        <h3>{user ? user?.name : "User Name"}</h3>
+        <p>{user ? user?.job : "User Occupation"}</p>
       </AvatarFrame>
       <Gap height={50} />
       <MainMenu>
@@ -31,10 +38,7 @@ const Sidebar = (props) => {
         </li>
 
         <li>
-          <Link
-            to="/my-class"
-            className={`nav-link ${getNavLinkClass("/my-class")}`}
-          >
+          <Link to="/" className={`nav-link ${getNavLinkClass("/")}`}>
             My Class
           </Link>
         </li>
@@ -61,9 +65,9 @@ const Sidebar = (props) => {
       </MainMenu>
 
       {/* TODO : Logout pake button, jadi nanti buat onclick logoutnya */}
-      <Footer>Logout</Footer>
+      <Footer onClick={logout}>Logout</Footer>
     </SidebarWrapper>
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);

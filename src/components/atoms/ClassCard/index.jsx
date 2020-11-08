@@ -1,5 +1,6 @@
 import React from "react";
-import Image from "assets/images/img-class-1.jpg";
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -33,16 +34,21 @@ const Card = styled.div`
   }
 `;
 
-const ClassCard = (props) => {
+const ClassCard = ({ data }) => {
+  console.log(data);
   return (
     <Card>
-      <a href={`/course/1`} className="link">
+      <Link to={`/courses/${data?.id}`} className="link">
         <div className="thumbnail">
-          <img src={Image} alt="kelas" className="img img-cover" />
+          <img
+            src={data ? data?.thumbnail : ""}
+            alt={data ? data?.name : ""}
+            className="img img-cover"
+          />
         </div>
-        <h1>React JS</h1>
-        <p className="sub-title">Aldino Efendi</p>
-      </a>
+        <h1>{data?.name ?? "Class Name"}</h1>
+        <p className="sub-title">{data?.mentor?.name ?? "Mentor Name"}</p>
+      </Link>
     </Card>
   );
 };

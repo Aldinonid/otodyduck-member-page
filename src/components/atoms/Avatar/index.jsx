@@ -1,12 +1,12 @@
 import React from "react";
+import DefaultUser from "assets/images/default-user.png";
 import { AvatarWrapper } from "./Avatar";
 
-const Avatar = (props) => {
-  return (
-    <AvatarWrapper
-      src="https://fileak.upbatam.ac.id/fotomhs/171510051.jpg"
-      alt="tetst"
-    />
+const Avatar = ({ user }) => {
+  return user?.avatar ? (
+    <AvatarWrapper src={user.avatar} alt={user.name} />
+  ) : (
+    <AvatarWrapper src={DefaultUser} alt="User" />
   );
 };
 

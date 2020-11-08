@@ -17,7 +17,6 @@ const SelectWrapper = styled.div`
   background-color: #ffffff;
   border: 1px solid #101b52;
   padding: 12px 16px;
-  width: 100%;
   border-radius: 5px;
 
   &.active {
@@ -39,7 +38,6 @@ const SelectItem = styled.div`
   background-color: #ffffff;
   border: 1px solid #101b52;
   padding: 0.75rem;
-  width: 100%;
 
   &.hidden {
     display: none;

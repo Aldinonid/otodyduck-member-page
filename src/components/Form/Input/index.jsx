@@ -26,6 +26,7 @@ const Input = ({
         placeholder={placeholder}
         className={error ? "error" : "normal"}
       />
+      <span className="error">{error}</span>
     </InputWrapper>
   );
 };

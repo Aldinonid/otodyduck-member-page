@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-const MainAppWrapper = styled.section`
-  display: flex;
-`;
-
 const Wrapper = styled.section`
-  margin-top: 100px;
-  flex: 1;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,4 +26,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export { MainAppWrapper, Wrapper };
+export { Wrapper };
