@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 
+import users from "constants/api/users";
+
 import { Avatar, Gap } from "components";
 import { SidebarWrapper, AvatarFrame, MainMenu, Footer } from "./Sidebar";
 
@@ -13,7 +15,13 @@ const Sidebar = ({ history, match }) => {
 
   function logout(e) {
     e.preventDefault();
-    history.push("/login");
+    users
+      .logout()
+      .then((res) => {
+        localStorage.removeItem("OTODYDUCK:token");
+        history.push("/login");
+      })
+      .catch((err) => console.log(err));
   }
 
   return (

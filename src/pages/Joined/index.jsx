@@ -31,10 +31,10 @@ const Joined = ({ history, match }) => {
   function joining() {
     courses
       .join(state.data.id)
-      .then((res) => history.push(`/courses/${state.data.id}`))
+      .then((res) => history.push(`/courses/${match.params.class}`))
       .catch((err) => {
         if (err?.response?.data?.message === "You already enroll this course")
-          history.push(`/courses/${state.data.id}`);
+          history.push(`/courses/${match.params.class}`);
       });
   }
 

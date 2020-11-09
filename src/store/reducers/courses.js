@@ -35,7 +35,14 @@ export default function (state = initialState, action) {
     case WATCH_COURSE:
       return {
         ...state,
-        status: action.payload,
+        data: {
+          ...state.data,
+          [action.payload.slug]: {
+            ...state.data[action.payload.slug],
+            ...action.payload,
+          },
+        },
+        status: "ok",
       };
 
     case MESSAGE_COURSE:

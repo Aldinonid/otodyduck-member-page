@@ -62,54 +62,49 @@ const MainMenu = styled.ul`
   }
 `;
 
-const SidebarClass = (props) => {
+const SidebarClass = ({ data, match, defaultUri }) => {
   const getNavLinkClass = (path) => {
-    return props.location === path ? " active" : "";
+    return match.url === path || defaultUri === path ? " active" : "";
   };
+
+  const list = [];
+  data.chapter.forEach((chapter, index) => {
+    list.push(
+      <li key={`${chapter.course_id}-${index}`}>
+        <span className="course course-header">
+          {chapter?.name ?? "Chapter Name"}
+        </span>
+      </li>
+    );
+    if (chapter?.lesson?.length > 0) {
+      chapter.lesson.forEach((lesson, index2) => {
+        list.push(
+          <li key={`${chapter.course_id}-${lesson.id}-${index2}`}>
+            <Link
+              className={[
+                "course course-item truncate ...",
+                getNavLinkClass(
+                  `/courses/${data.slug}/${chapter.id}/${lesson.video}`
+                ),
+              ].join(" ")}
+              to={`/courses/${data.slug}/${chapter.id}/${lesson.video}`}
+            >
+              {lesson?.name ?? "Lesson Name"}
+            </Link>
+          </li>
+        );
+      });
+    }
+  });
 
   return (
     <SidebarWrapper>
       <Gap height={32} />
-      <Link to="/my-class" className="back-home">
+      <Link to="/" className="back-home">
         Back to Home
       </Link>
       <Gap height={32} />
-      <MainMenu>
-        <li>
-          <span className="course course-header">Chapter Name</span>
-        </li>
-        <li>
-          <Link to="/course/1/1/1" className="course course-item active">
-            Lesson Name
-          </Link>
-        </li>
-        <li>
-          <Link to="/course/1/1/2" className="course course-item">
-            Lesson Name
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/course/1/1/3"
-            className={`course course-item ${getNavLinkClass("/course/1/1/3")}`}
-          >
-            Lesson Name
-          </Link>
-        </li>
-        <li>
-          <span className="course course-header">Chapter Name</span>
-        </li>
-        <li>
-          <Link to="/course/1/2/1" className="course course-item">
-            Lesson Name
-          </Link>
-        </li>
-        <li>
-          <Link to="/course/1/2/2" className="course course-item">
-            Lesson Name
-          </Link>
-        </li>
-      </MainMenu>
+      <MainMenu>{list}</MainMenu>
     </SidebarWrapper>
   );
 };

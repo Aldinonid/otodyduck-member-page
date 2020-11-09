@@ -44,7 +44,6 @@ export default function MyClassPage() {
 
   useEffect(() => {
     document.title = "My Class | Otodyduck";
-    window.scroll(0, 0);
 
     dispatch(statusCourses("loading"));
     courses
@@ -57,7 +56,6 @@ export default function MyClassPage() {
       });
   }, [dispatch]);
 
-  console.log(COURSES);
   return (
     <MainAppWrapper>
       <Sidebar />

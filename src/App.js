@@ -12,13 +12,12 @@ import {
   Register,
   Login,
   MyClassPage,
-  // CoursePage,
+  CoursePage,
   MyProgressPage,
   SettingsPage,
   Joined,
   Unauthenticated,
   NotFound,
-  // ServerError,
 } from "./pages";
 
 function App() {
@@ -47,6 +46,13 @@ function App() {
 
           <MemberRoute exact path="/" component={MyClassPage} />
           <MemberRoute path="/joined/:class" component={Joined} />
+
+          <MemberRoute
+            path="/courses/:class/:chapter/:uid"
+            component={CoursePage}
+          />
+          <MemberRoute path="/courses/:class/" component={CoursePage} />
+
           <MemberRoute path="/my-progress" component={MyProgressPage} />
           <MemberRoute path="/settings" component={SettingsPage} />
 
