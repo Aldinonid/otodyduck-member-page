@@ -19,6 +19,8 @@ const Sidebar = ({ history, match }) => {
       .logout()
       .then((res) => {
         localStorage.removeItem("OTODYDUCK:token");
+        const expires = new Date(new Date().getTime() - 99999);
+        document.cookie = `OTODYDUCK:user=; expired=${expires.toUTCString()};`;
         history.push("/login");
       })
       .catch((err) => console.log(err));

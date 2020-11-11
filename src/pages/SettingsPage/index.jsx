@@ -1,21 +1,24 @@
-import React, { Component } from "react";
-import { Sidebar } from "parts";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+
+import { Sidebar, SettingForm } from "parts";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
   display: flex;
 `;
 
-export default class SettingsPage extends Component {
-  componentDidMount() {
+export default function SettingsPage() {
+  useEffect(() => {
     document.title = "Settings | Otodyduck";
-  }
+  }, []);
 
-  render() {
-    return (
-      <Wrapper>
-        <Sidebar {...this.props} />
-      </Wrapper>
-    );
-  }
+  const USERS = useSelector((state) => state.users);
+
+  return (
+    <Wrapper>
+      <Sidebar />
+      <SettingForm details={USERS} />
+    </Wrapper>
+  );
 }

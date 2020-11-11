@@ -5,6 +5,7 @@ export default {
   register: (payload) => axios.post("/users/register", payload),
   refresh: (credentials) => axios.post("/refresh-tokens", credentials),
 
-  logout: () => axios.post("/users/logout"),
   details: () => axios.get("/users"),
+  update: (data) => axios.put("/users", data),
+  logout: () => axios.post("/users/logout"),
 };
