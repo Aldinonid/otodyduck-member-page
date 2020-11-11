@@ -15,7 +15,7 @@ const ClassCard = ({ data }) => {
           />
         </div>
         <h1>{data?.name ?? "Class Name"}</h1>
-        <p className="sub-title">{data?.mentor?.name ?? "Mentor Name"}</p>
+        <p className="sub-title">{data?.mentor_id?.name ?? "Mentor Name"}</p>
       </Link>
     </Card>
   );

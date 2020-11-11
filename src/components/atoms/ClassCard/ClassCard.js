@@ -8,19 +8,14 @@ const Card = styled.div`
     .thumbnail {
       height: 160px;
       cursor: pointer;
-
-      .img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .img-cover {
-        object-fit: cover;
-      }
     }
 
     .sub-title {
       color: #b0b0b0;
+    }
+
+    h1 {
+      margin-top: 50px;
     }
 
     :hover {
