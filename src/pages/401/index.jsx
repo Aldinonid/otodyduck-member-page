@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Gap } from "components";
 import { Wrapper } from "./401";
 
-const Unauthenticated = ({ fallbackUrl, fallbackText, external }) => {
+const Unauthenticated = () => {
   return (
     <Wrapper>
       <img
@@ -18,11 +18,7 @@ const Unauthenticated = ({ fallbackUrl, fallbackText, external }) => {
         Seem like you do not have access <br /> for this page. We are sorry
       </p>
       <Gap height={30} />
-      {external ? (
-        <a href={fallbackUrl}>{fallbackText || "Logging me in"}</a>
-      ) : (
-        <Link to={fallbackUrl}>{fallbackText || "Logging me in"}</Link>
-      )}
+      <Link to="/login">Logging me in</Link>
     </Wrapper>
   );
 };

@@ -1,66 +1,9 @@
 import React from "react";
-import { Gap } from "components";
-
 import { Link, withRouter } from "react-router-dom";
 
-import styled from "styled-components";
-
-const SidebarWrapper = styled.aside`
-  position: fixed;
-  color: #ffffff;
-  height: 100vh;
-  width: 280px;
-  background-color: #101b52;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .back-home {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding-left: 50px;
-    font-size: 20px;
-
-    :hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const MainMenu = styled.ul`
-  flex: 1;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    display: list-item;
-
-    .course {
-      color: #b0b0b0;
-      display: flex;
-      align-items: center;
-      padding: 10px 0 10px 20px;
-      text-decoration: none;
-
-      &.course-header {
-        background-color: #17808a;
-        font-weight: 600;
-        color: #ffffff;
-      }
-
-      &.course-item {
-        padding-left: 30px;
-
-        &.active {
-          color: #30c8d6;
-          font-weight: 600;
-        }
-      }
-    }
-  }
-`;
+import { Gap } from "components";
+import { ReactComponent as ArrowBack } from "assets/images/icon-arrow-back.svg";
+import { SidebarWrapper, MainMenu } from "./SidebarClass";
 
 const SidebarClass = ({ data, match, defaultUri }) => {
   const getNavLinkClass = (path) => {
@@ -82,7 +25,7 @@ const SidebarClass = ({ data, match, defaultUri }) => {
           <li key={`${chapter.course_id}-${lesson.id}-${index2}`}>
             <Link
               className={[
-                "course course-item truncate ...",
+                "course course-item",
                 getNavLinkClass(
                   `/courses/${data.slug}/${chapter.id}/${lesson.video}`
                 ),
@@ -99,12 +42,14 @@ const SidebarClass = ({ data, match, defaultUri }) => {
 
   return (
     <SidebarWrapper>
-      <Gap height={32} />
       <Link to="/" className="back-home">
+        <ArrowBack className="arrow" />
         Back to Home
       </Link>
-      <Gap height={32} />
-      <MainMenu>{list}</MainMenu>
+      <MainMenu>
+        <Gap height={50} />
+        {list}
+      </MainMenu>
     </SidebarWrapper>
   );
 };
