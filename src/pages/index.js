@@ -1,5 +1,6 @@
 import Login from "./Login";
 import Register from "./Register";
+import RegisterMentor from "./RegisterMentor";
 import MyClassPage from "./MyClassPage";
 import CoursePage from "./CoursePage";
 import MyProgressPage from "./MyProgressPage";
@@ -12,6 +13,7 @@ import ServerError from "./500";
 export {
   Login,
   Register,
+  RegisterMentor,
   MyClassPage,
   CoursePage,
   MyProgressPage,

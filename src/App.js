@@ -10,6 +10,7 @@ import { populateProfile } from "store/actions/users";
 import { MemberRoute, GuestRoute } from "components";
 import {
   Register,
+  RegisterMentor,
   Login,
   MyClassPage,
   CoursePage,
@@ -42,6 +43,7 @@ function App() {
         <Switch>
           <GuestRoute path="/login" component={Login} />
           <GuestRoute path="/register" component={Register} />
+          <GuestRoute path="/register-mentor" component={RegisterMentor} />
           <GuestRoute path="/private" component={Unauthenticated} />
 
           <MemberRoute exact path="/" component={MyClassPage} />

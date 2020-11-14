@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade } from "react-reveal";
 import { useDispatch } from "react-redux";
 
 import { setAuthorizationHeader } from "configs/axios";
@@ -62,43 +63,47 @@ const Login = ({ history }) => {
   return (
     <Container>
       <LoginWrapper>
-        <h2 className="title">Sign In</h2>
-        <p className="sub-title">Login to continue studying</p>
-        <Gap height={20} />
-        <form onSubmit={submit}>
-          <Input
-            name="Email"
-            type="email"
-            onChange={setState}
-            value={Email}
-            placeholder="Email Address"
-            labelName="Email Address"
-          />
+        <Fade bottom>
+          <h2 className="title">Sign In</h2>
+          <p className="sub-title">Login to continue studying</p>
+          <Gap height={20} />
+          <form onSubmit={submit}>
+            <Input
+              name="Email"
+              type="email"
+              onChange={setState}
+              value={Email}
+              placeholder="Email Address"
+              labelName="Email Address"
+            />
 
-          <Gap height={16} />
+            <Gap height={16} />
 
-          <Input
-            name="Password"
-            type="password"
-            onChange={setState}
-            value={Password}
-            placeholder="Your Password"
-            labelName="Password"
-          />
+            <Input
+              name="Password"
+              type="password"
+              onChange={setState}
+              value={Password}
+              placeholder="Your Password"
+              labelName="Password"
+            />
 
-          <Gap height={48} />
+            <Gap height={48} />
 
-          <Button type="submit">Login My Account</Button>
-        </form>
-        <Gap height={30} />
-        <LinkToRegister>
-          Don't have an account ?{" "}
-          <span>
-            <Link to="/register" className="link-login">
-              Join Now
-            </Link>
-          </span>{" "}
-        </LinkToRegister>
+            <Button type="submit">Login My Account</Button>
+          </form>
+          <Gap height={30} />
+        </Fade>
+        <Fade bottom delay={500}>
+          <LinkToRegister>
+            Don't have an account ?{" "}
+            <span>
+              <Link to="/register" className="link-login">
+                Join Now
+              </Link>
+            </span>{" "}
+          </LinkToRegister>
+        </Fade>
       </LoginWrapper>
     </Container>
   );

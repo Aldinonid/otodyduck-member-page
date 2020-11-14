@@ -7,9 +7,14 @@ import users from "constants/api/users";
 import fieldErrors from "helpers/fieldErrors";
 
 import { Gap, Input, Select } from "components";
-import { Container, RegisterWrapper, Button, LinkToLogin } from "./Register";
+import {
+  Container,
+  RegisterWrapper,
+  Button,
+  LinkToLogin,
+} from "./RegisterMentor";
 
-const Register = ({ history }) => {
+const RegisterMentor = ({ history }) => {
   const [{ name, email, password, job, otherJob }, setState] = useForm({
     name: "",
     email: "",
@@ -29,6 +34,7 @@ const Register = ({ history }) => {
         email: email,
         password: password,
         job: job === "others" ? otherJob : job,
+        role: "teacher",
       })
       .then((res) => {
         history.push("/login");
@@ -42,9 +48,11 @@ const Register = ({ history }) => {
     <Container>
       <RegisterWrapper>
         <Fade bottom>
-          <h2 className="title">New Student</h2>
-          <p className="sub-title">Grow Skills From Anywhere</p>
+          <h2 className="title">New Teacher</h2>
+          <p className="sub-title">Share Your Knowledge To Anyone, Anywhere</p>
+
           <Gap height={20} />
+
           <form onSubmit={submit}>
             <Input
               name="name"
@@ -86,10 +94,10 @@ const Register = ({ history }) => {
               labelName="Occupation"
               name="job"
               value={job}
-              fallbackText="Select your Focus"
+              fallbackText="Select your Skill"
               onClick={setState}
             >
-              <option value="">Select your focus</option>
+              <option value="">Select your skill</option>
               <option value="Web Designer">Web Designer</option>
               <option value="Front-End Developer">Front-End Developer</option>
               <option value="Back-End Developer">Back-End Developer</option>
@@ -114,7 +122,7 @@ const Register = ({ history }) => {
 
             <Gap height={48} />
 
-            <Button type="submit">Join Now</Button>
+            <Button type="submit">Be a Teacher Now</Button>
           </form>
           <Gap height={30} />
         </Fade>
@@ -128,18 +136,10 @@ const Register = ({ history }) => {
               </Link>
             </span>{" "}
           </LinkToLogin>
-          <LinkToLogin>
-            I want to join as{" "}
-            <span>
-              <Link to="/register-mentor" className="link-login">
-                Teacher
-              </Link>
-            </span>{" "}
-          </LinkToLogin>
         </Fade>
       </RegisterWrapper>
     </Container>
   );
 };
 
-export default withRouter(Register);
+export default withRouter(RegisterMentor);
