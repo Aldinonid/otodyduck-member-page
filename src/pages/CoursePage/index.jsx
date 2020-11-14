@@ -11,7 +11,7 @@ import courses from "constants/api/courses";
 
 import styled from "styled-components";
 
-import { SidebarClass, Course } from "parts";
+import { SidebarClass, Course, Loading } from "parts";
 
 const CourseWrapper = styled.section`
   display: flex;
@@ -38,7 +38,7 @@ export default function CoursePage({ history, match }) {
       );
   }, [match.params.class, dispatch]);
 
-  if (COURSES.status === "loading") return <section>Loading...</section>;
+  if (COURSES.status === "loading") return <Loading />;
   if (COURSES.status === "error")
     return <section>{COURSES?.message ?? "Error Here"}</section>;
 

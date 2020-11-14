@@ -4,5 +4,16 @@ import MyClass from "./MyClass";
 import Course from "./Course";
 import Progress from "./Progress";
 import SettingForm from "./SettingForm";
+import Loading from "./Loading";
+import Error from "./Error";
 
-export { Sidebar, SidebarClass, MyClass, Course, Progress, SettingForm };
+export {
+  Sidebar,
+  SidebarClass,
+  MyClass,
+  Course,
+  Progress,
+  SettingForm,
+  Loading,
+  Error,
+};

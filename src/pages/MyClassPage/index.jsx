@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { MainAppWrapper, Wrapper } from "./MyClassPage";
 import { Gap } from "components";
-import { Sidebar, MyClass } from "parts";
+import { Sidebar, MyClass, Loading } from "parts";
 
 import courses from "constants/api/courses";
 import {
@@ -59,7 +59,7 @@ export default function MyClassPage() {
   return (
     <MainAppWrapper>
       <Sidebar />
-      {COURSES.status === "loading" && "Loading..."}
+      {COURSES.status === "loading" && <Loading />}
       {COURSES.status === "error" && COURSES.message}
       {COURSES.status === "ok" &&
         (COURSES.total > 0 ? <MyClass data={COURSES} /> : <EmptyState />)}
