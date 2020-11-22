@@ -59,8 +59,6 @@ const SettingForm = ({ details }) => {
 
     if (payload.job === "others") payload.job = state.otherJob;
 
-    //TODO: Kerjain bagian upload image
-
     if (state.avatar.indexOf("base64") > -1) {
       const avatar = await media.upload({
         image: state.avatar,
