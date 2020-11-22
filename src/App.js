@@ -15,6 +15,10 @@ import {
   MyClassPage,
   CoursePage,
   MyProgressPage,
+  MyCoursesPage,
+  MyCourseDetailsPage,
+  ToolsPage,
+  ToolDetailsPage,
   SettingsPage,
   Joined,
   Unauthenticated,
@@ -48,14 +52,19 @@ function App() {
 
           <MemberRoute exact path="/" component={MyClassPage} />
           <MemberRoute path="/joined/:class" component={Joined} />
-
           <MemberRoute
             path="/courses/:class/:chapter/:uid"
             component={CoursePage}
           />
           <MemberRoute path="/courses/:class/" component={CoursePage} />
-
           <MemberRoute path="/my-progress" component={MyProgressPage} />
+
+          <MemberRoute exact path="/class" component={MyCoursesPage} />
+          <MemberRoute path="/class/:slug" component={MyCourseDetailsPage} />
+
+          <MemberRoute exact path="/tools" component={ToolsPage} />
+          <MemberRoute path="/tools/:id" component={ToolDetailsPage} />
+
           <MemberRoute path="/settings" component={SettingsPage} />
 
           <Route path="*" component={NotFound} />

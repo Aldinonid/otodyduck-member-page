@@ -64,6 +64,30 @@ const Sidebar = ({ history, match }) => {
           </a>
         </li>
 
+        {user?.role === "teacher" ? (
+          <>
+            <li>
+              <Link
+                to="/class"
+                className={`nav-link ${getNavLinkClass("/class")}`}
+              >
+                My Courses
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/tools"
+                className={`nav-link ${getNavLinkClass("/tools")}`}
+              >
+                Tools
+              </Link>
+            </li>
+          </>
+        ) : (
+          ""
+        )}
+
         <li>
           <Link
             to="/settings"

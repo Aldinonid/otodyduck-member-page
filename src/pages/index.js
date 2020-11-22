@@ -4,6 +4,10 @@ import RegisterMentor from "./RegisterMentor";
 import MyClassPage from "./MyClassPage";
 import CoursePage from "./CoursePage";
 import MyProgressPage from "./MyProgressPage";
+import MyCoursesPage from "./MyCoursesPage";
+import MyCourseDetailsPage from "./MyCourseDetailsPage";
+import ToolsPage from "./ToolsPage";
+import ToolDetailsPage from "./ToolDetailsPage";
 import SettingsPage from "./SettingsPage";
 import Joined from "./Joined";
 import Unauthenticated from "./401";
@@ -17,6 +21,10 @@ export {
   MyClassPage,
   CoursePage,
   MyProgressPage,
+  MyCoursesPage,
+  MyCourseDetailsPage,
+  ToolsPage,
+  ToolDetailsPage,
   SettingsPage,
   Joined,
   Unauthenticated,
