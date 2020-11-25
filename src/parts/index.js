@@ -6,6 +6,10 @@ import Progress from "./Progress";
 import SettingForm from "./SettingForm";
 import Loading from "./Loading";
 import Error from "./Error";
+import MyCourses from "./MyCourses";
+import MyCourseDetail from "./MyCourseDetail";
+import Tools from "./Tools";
+import ToolDetail from "./ToolDetail";
 
 export {
   Sidebar,
@@ -16,4 +20,8 @@ export {
   SettingForm,
   Loading,
   Error,
+  MyCourses,
+  MyCourseDetail,
+  Tools,
+  ToolDetail,
 };
