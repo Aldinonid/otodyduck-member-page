@@ -11,10 +11,15 @@ const Wrapper = styled.section`
   display: flex;
 `;
 
-const ToolDetailsPage = ({ location }) => {
-  const toolId = location.pathname.split("/")[2];
+const ToolDetailsPage = ({ history }) => {
+  const toolId = history.location.pathname.split("/")[2];
   const dispatch = useDispatch();
   const TOOLS = useSelector((state) => state.tools);
+  const USER = useSelector((state) => state.users);
+
+  if (USER?.role === "student") {
+    history.push("/");
+  }
 
   useEffect(() => {
     document.title = "Tool | Otodyduck";

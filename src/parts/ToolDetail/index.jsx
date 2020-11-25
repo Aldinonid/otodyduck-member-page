@@ -72,6 +72,9 @@ const ToolDetail = ({ details }) => {
         <h1 className="title">{details?.name}</h1>
         <Gap height={30} />
         <Button onClick={() => setmodal(true)}>Edit Tool</Button>
+        <Button onClick={deleteTool} remove style={{ marginLeft: 20 }}>
+          Delete Tool
+        </Button>
         <Gap height={30} />
         <img src={details?.image} alt={details?.name ?? "Tool Name"} />
         <Gap height={20} />
@@ -87,10 +90,6 @@ const ToolDetail = ({ details }) => {
             </a>
           </li>
         </ul>
-        <Gap height={20} />
-        <Button onClick={deleteTool} remove>
-          Delete Tool
-        </Button>
       </Wrapper>
       <form onSubmit={submit}>
         <Modal open={modal} onClose={() => setmodal(false)} title="Edit Tool">
