@@ -8,22 +8,11 @@ import users from "constants/api/users";
 import { populateProfile } from "store/actions/users";
 
 import { MemberRoute, GuestRoute } from "components";
-import {
-  Register,
-  RegisterMentor,
-  Login,
-  MyClassPage,
-  CoursePage,
-  MyProgressPage,
-  MyCoursesPage,
-  MyCourseDetailsPage,
-  ToolsPage,
-  ToolDetailsPage,
-  SettingsPage,
-  Joined,
-  Unauthenticated,
-  NotFound,
-} from "./pages";
+import { Login, Register, RegisterMentor } from "./pages";
+import { Unauthenticated, NotFound, Joined } from "./pages";
+import { MyProgressPage, CoursePage, MyClassPage, SettingsPage } from "./pages";
+import { ToolsPage, ToolDetailsPage } from "./pages";
+import { MyCoursesPage, MyCourseDetailsPage } from "./pages";
 
 function App() {
   const dispatch = useDispatch();

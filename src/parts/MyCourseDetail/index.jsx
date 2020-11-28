@@ -77,6 +77,12 @@ const MyCourseDetail = ({ data }) => {
       tool_id: [],
     };
 
+    if (state.tools.length === 0) {
+      return toast.error("Please add tools before publish !");
+    } else {
+      state.tools.forEach((item) => payload.tool_id.push(item.id));
+    }
+
     courses.edit(state.id, payload).then((res) => {
       dispatch(changeStatus(res.data.status));
       toast.success("Class has been Published !");
@@ -89,6 +95,8 @@ const MyCourseDetail = ({ data }) => {
       status: "draft",
       tool_id: [],
     };
+
+    state.tools.forEach((item) => payload.tool_id.push(item.id));
 
     courses.edit(state.id, payload).then((res) => {
       dispatch(changeStatus(res.data.status));
@@ -134,6 +142,8 @@ const MyCourseDetail = ({ data }) => {
 
     if (tool) {
       tool.map((item) => payload.tool_id.push(item.value));
+    } else {
+      return toast.error("Please fill in Tools");
     }
 
     if (state.thumbnail.indexOf("base64") > -1) {
