@@ -2,6 +2,7 @@ import Sidebar from "./Sidebar";
 import SidebarClass from "./SidebarClass";
 import MyClass from "./MyClass";
 import Course from "./Course";
+import Transaction from "./Transaction";
 import Progress from "./Progress";
 import SettingForm from "./SettingForm";
 import Loading from "./Loading";
@@ -16,6 +17,7 @@ export {
   SidebarClass,
   MyClass,
   Course,
+  Transaction,
   Progress,
   SettingForm,
   Loading,

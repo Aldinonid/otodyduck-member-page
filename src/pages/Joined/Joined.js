@@ -25,7 +25,7 @@ const Wrapper = styled.section`
     background-color: #40dfed;
   }
 
-  button {
+  .link {
     font-size: 18px;
     cursor: pointer;
     border: none;

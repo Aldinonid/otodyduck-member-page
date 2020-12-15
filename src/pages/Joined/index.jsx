@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { withRouter, Link } from "react-router-dom";
 
 import courses from "constants/api/courses";
 
 import { Gap } from "components";
 import { ServerError } from "pages";
+import { Loading } from "parts";
 import { Wrapper } from "./Joined";
 
 const Joined = ({ history, match }) => {
@@ -14,29 +15,28 @@ const Joined = ({ history, match }) => {
     data: {},
   }));
 
+  const joining = useCallback(async () => {
+    try {
+      const details = await courses.details(match.params.class);
+      const joined = await courses.join(details.id);
+      if (joined.data.snap_url) {
+        window.location.href = joined.data.snap_url;
+      } else {
+        setState({ isLoading: false, isError: false, data: details });
+      }
+    } catch (error) {
+      if (error?.response?.data?.message === "You already enroll this course") {
+        history.push(`/courses/${match.params.class}`);
+      }
+    }
+  }, [match.params.class, history]);
+
   useEffect(() => {
-    courses
-      .details(match.params.class)
-      .then((res) => {
-        setState({ isLoading: false, isError: false, data: res });
-      })
-      .catch((err) => {
-        setState({ isLoading: false, isError: true, data: null });
-      });
-  }, [match.params.class]);
+    joining();
+  }, [joining]);
 
-  if (state.isLoading) return <section>Doing Science ...</section>;
+  if (state.isLoading) return <Loading />;
   if (state.isError) return <ServerError />;
-
-  function joining() {
-    courses
-      .join(state.data.id)
-      .then((res) => history.push(`/courses/${match.params.class}`))
-      .catch((err) => {
-        if (err?.response?.data?.message === "You already enroll this course")
-          history.push(`/courses/${match.params.class}`);
-      });
-  }
 
   return (
     <Wrapper>
@@ -53,7 +53,9 @@ const Joined = ({ history, match }) => {
         <strong>{state.data.name}</strong> class
       </p>
       <Gap height={30} />
-      <button onClick={joining}>Start Learn</button>
+      <Link to={`/courses/${match.params.class}`} className="link">
+        Start Learn
+      </Link>
     </Wrapper>
   );
 };
