@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import useForm from "helpers/hooks/useForm";
+import formatThousands from "helpers/formatThousands";
 import { courses, medias, chapters, lessons } from "constants/api";
 import { changeStatus } from "store/actions/classes";
 import image2base64 from "utils/image2base64";
@@ -28,6 +29,7 @@ const MyCourseDetail = ({ data }) => {
     type: data?.type ?? "free",
     thumbnail: data?.thumbnail ?? "",
     level: data?.level ?? "",
+    price: data?.price ?? 0,
     category: data?.category ?? "",
     description: data?.description ?? "",
     tools: data?.tools ?? [],
@@ -133,6 +135,7 @@ const MyCourseDetail = ({ data }) => {
       certificate: false,
       type: state.type,
       status: data?.status,
+      price: state.price,
       level: state.level,
       description: state.description,
       category: state.category,
@@ -154,7 +157,10 @@ const MyCourseDetail = ({ data }) => {
       payload.thumbnail = thumbnail.data.image;
     }
 
-    courses.edit(state.id, payload).then((res) => history.go());
+    courses
+      .edit(state.id, payload)
+      .then((res) => history.go())
+      .catch((err) => toast.error(err?.response?.data?.message));
   }
 
   return (
@@ -173,6 +179,9 @@ const MyCourseDetail = ({ data }) => {
         <ul>
           <li>
             <strong>Type:</strong> {data?.type}
+          </li>
+          <li>
+            <strong>Price:</strong> {`Rp. ${formatThousands(data?.price)}`}
           </li>
           <li>
             <strong>Status:</strong> {data?.status}
@@ -292,6 +301,31 @@ const MyCourseDetail = ({ data }) => {
           onClose={() => seteditClass(false)}
           title="Edit Class"
         >
+          <Select
+            labelName="Category"
+            name="category"
+            value={state.category}
+            fallbackText="Select Course Category"
+            onClick={setState}
+          >
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+            <option value="soft skill">Soft Skill</option>
+          </Select>
+
+          <Gap height={10} />
+
+          <MultiSelect
+            labelName="Tools"
+            name="tools"
+            placeholder="Select Tools For This Course"
+            option={TOOLS.data}
+            onChange={setTool}
+            defaultValue={state.tools}
+          />
+
+          <Gap height={10} />
+
           <Input
             name="name"
             type="text"
@@ -313,6 +347,23 @@ const MyCourseDetail = ({ data }) => {
             <option value="free">Free</option>
             <option value="premium">Premium</option>
           </Select>
+
+          {state.type === "premium" && (
+            <>
+              {" "}
+              <Gap height={10} />
+              <Input
+                name="price"
+                type="number"
+                onChange={setState}
+                value={state.price}
+                placeholder="Course Price"
+                labelName="Price"
+              />{" "}
+            </>
+          )}
+
+          <Gap height={10} />
 
           <Gap height={10} />
 
@@ -338,31 +389,6 @@ const MyCourseDetail = ({ data }) => {
             value={state.description}
             placeholder="Description"
             labelName="Description"
-          />
-
-          <Gap height={10} />
-
-          <Select
-            labelName="Category"
-            name="category"
-            value={state.category}
-            fallbackText="Select Course Category"
-            onClick={setState}
-          >
-            <option value="design">Design</option>
-            <option value="development">Development</option>
-            <option value="soft skill">Soft Skill</option>
-          </Select>
-
-          <Gap height={10} />
-
-          <MultiSelect
-            labelName="Tools"
-            name="tools"
-            placeholder="Select Tools For This Course"
-            option={TOOLS.data}
-            onChange={setTool}
-            defaultValue={state.tools}
           />
 
           <Gap height={16} />

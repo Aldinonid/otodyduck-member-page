@@ -29,6 +29,7 @@ const MyCourses = ({ data }) => {
     type: "free",
     thumbnail: "",
     level: "",
+    price: 0,
     category: "",
     description: "",
     previewThumbnail: "",
@@ -71,6 +72,7 @@ const MyCourses = ({ data }) => {
       certificate: false,
       type: state.type,
       status: "draft",
+      price: state.price,
       level: state.level,
       description: state.description,
       category: state.category,
@@ -95,7 +97,7 @@ const MyCourses = ({ data }) => {
       .then((res) => {
         history.go();
       })
-      .catch((err) => toast.error("Something went Wrong"));
+      .catch((err) => toast.error(err?.response?.data?.message));
   }
 
   return (
@@ -118,6 +120,30 @@ const MyCourses = ({ data }) => {
           onClose={() => setIsOpen(false)}
           title="Create New Course"
         >
+          <Select
+            labelName="Category"
+            name="category"
+            value={state.category}
+            fallbackText="Select Course Category"
+            onClick={setState}
+          >
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+            <option value="soft skill">Soft Skill</option>
+          </Select>
+
+          <Gap height={10} />
+
+          <MultiSelect
+            labelName="Tools"
+            name="tools"
+            placeholder="Select Tools For This Course"
+            option={toolCourse}
+            onChange={setTool}
+          />
+
+          <Gap height={10} />
+
           <Input
             name="name"
             type="text"
@@ -139,6 +165,21 @@ const MyCourses = ({ data }) => {
             <option value="free">Free</option>
             <option value="premium">Premium</option>
           </Select>
+
+          {state.type === "premium" && (
+            <>
+              {" "}
+              <Gap height={10} />
+              <Input
+                name="price"
+                type="number"
+                onChange={setState}
+                value={state.price}
+                placeholder="Course Price"
+                labelName="Price"
+              />{" "}
+            </>
+          )}
 
           <Gap height={10} />
 
@@ -164,30 +205,6 @@ const MyCourses = ({ data }) => {
             value={state.description}
             placeholder="Description"
             labelName="Description"
-          />
-
-          <Gap height={10} />
-
-          <Select
-            labelName="Category"
-            name="category"
-            value={state.category}
-            fallbackText="Select Course Category"
-            onClick={setState}
-          >
-            <option value="design">Design</option>
-            <option value="development">Development</option>
-            <option value="soft skill">Soft Skill</option>
-          </Select>
-
-          <Gap height={10} />
-
-          <MultiSelect
-            labelName="Tools"
-            name="tools"
-            placeholder="Select Tools For This Course"
-            option={toolCourse}
-            onChange={setTool}
           />
 
           <Gap height={16} />
