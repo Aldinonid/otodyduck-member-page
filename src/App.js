@@ -12,7 +12,7 @@ import { Login, Register, RegisterMentor } from "./pages";
 import { Unauthenticated, NotFound, Joined } from "./pages";
 import { MyProgressPage, CoursePage, MyClassPage, SettingsPage } from "./pages";
 import { ToolsPage, ToolDetailsPage } from "./pages";
-import { MyCoursesPage, MyCourseDetailsPage } from "./pages";
+import { MyCoursesPage, MyCourseDetailsPage, TransactionPage } from "./pages";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +53,8 @@ function App() {
 
           <MemberRoute exact path="/tools" component={ToolsPage} />
           <MemberRoute path="/tools/:id" component={ToolDetailsPage} />
+
+          <MemberRoute path="/orders" component={TransactionPage} />
 
           <MemberRoute path="/settings" component={SettingsPage} />
 
