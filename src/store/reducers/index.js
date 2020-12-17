@@ -4,6 +4,7 @@ import courses from "./courses";
 import tools from "./tools";
 import classes from "./classes";
 import orders from "./orders";
+import flows from "./flows";
 
 export default combineReducers({
   users,
@@ -11,4 +12,5 @@ export default combineReducers({
   tools,
   classes,
   orders,
+  flows,
 });

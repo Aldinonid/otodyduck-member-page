@@ -4,6 +4,8 @@ import RegisterMentor from "./RegisterMentor";
 import MyClassPage from "./MyClassPage";
 import CoursePage from "./CoursePage";
 import MyProgressPage from "./MyProgressPage";
+import FlowPage from "./FlowPage";
+import FlowDetailsPage from "./FlowDetailsPage";
 import TransactionPage from "./TransactionPage";
 import MyCoursesPage from "./MyCoursesPage";
 import MyCourseDetailsPage from "./MyCourseDetailsPage";
@@ -22,6 +24,8 @@ export {
   MyClassPage,
   CoursePage,
   MyProgressPage,
+  FlowPage,
+  FlowDetailsPage,
   TransactionPage,
   MyCoursesPage,
   MyCourseDetailsPage,

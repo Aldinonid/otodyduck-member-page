@@ -28,7 +28,7 @@ const MyCoursesPage = ({ history }) => {
     document.title = "Courses | Otodyduck";
 
     dispatch(statusClass("loading"));
-    courses.getBasedOnMentor(USER?.id).then((res) => {
+    courses.get({ params: { mentor_id: USER?.id } }).then((res) => {
       dispatch(fetchClass(res));
     });
 

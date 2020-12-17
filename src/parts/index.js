@@ -4,6 +4,8 @@ import MyClass from "./MyClass";
 import Course from "./Course";
 import Transaction from "./Transaction";
 import Progress from "./Progress";
+import Flow from "./Flow";
+import FlowDetail from "./FlowDetail";
 import SettingForm from "./SettingForm";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -19,6 +21,8 @@ export {
   Course,
   Transaction,
   Progress,
+  Flow,
+  FlowDetail,
   SettingForm,
   Loading,
   Error,

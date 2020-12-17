@@ -11,8 +11,9 @@ import { MemberRoute, GuestRoute } from "components";
 import { Login, Register, RegisterMentor } from "./pages";
 import { Unauthenticated, NotFound, Joined } from "./pages";
 import { MyProgressPage, CoursePage, MyClassPage, SettingsPage } from "./pages";
-import { ToolsPage, ToolDetailsPage } from "./pages";
-import { MyCoursesPage, MyCourseDetailsPage, TransactionPage } from "./pages";
+import { ToolsPage, ToolDetailsPage, MyCoursesPage } from "./pages";
+import { MyCourseDetailsPage, TransactionPage, FlowPage } from "./pages";
+import { FlowDetailsPage } from "./pages";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,9 @@ function App() {
 
           <MemberRoute exact path="/tools" component={ToolsPage} />
           <MemberRoute path="/tools/:id" component={ToolDetailsPage} />
+
+          <MemberRoute exact path="/journey" component={FlowPage} />
+          <MemberRoute path="/journey/:slug" component={FlowDetailsPage} />
 
           <MemberRoute path="/orders" component={TransactionPage} />
 

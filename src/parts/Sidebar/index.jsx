@@ -9,8 +9,10 @@ import { SidebarWrapper, AvatarFrame, MainMenu, Footer } from "./Sidebar";
 
 const Sidebar = ({ history, match }) => {
   const user = useSelector((state) => state.users);
+  const paramsPath = `/${match?.path?.split("/")[1]}`;
+
   const getNavLinkClass = (path) => {
-    return match?.path === path ? "active" : "";
+    return paramsPath === path ? "active" : "";
   };
 
   function logout(e) {
@@ -90,6 +92,15 @@ const Sidebar = ({ history, match }) => {
                 className={`nav-link ${getNavLinkClass("/tools")}`}
               >
                 Tools
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/journey"
+                className={`nav-link ${getNavLinkClass("/journey")}`}
+              >
+                Flow Learn
               </Link>
             </li>
           </>

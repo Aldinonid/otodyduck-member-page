@@ -4,5 +4,6 @@ import ClassCard from "./ClassCard";
 import Modal from "./Modal";
 import MentorClassCard from "./MentorClassCard";
 import ToolCard from "./ToolCard";
+import FlowCard from "./FlowCard";
 
-export { Avatar, Gap, ClassCard, Modal, MentorClassCard, ToolCard };
+export { Avatar, Gap, ClassCard, Modal, MentorClassCard, ToolCard, FlowCard };
