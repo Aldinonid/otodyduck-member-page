@@ -106,6 +106,7 @@ const MyCourseDetail = ({ data }) => {
     });
   }
 
+  //? Chapter Function ?//
   function submitChapter(e) {
     e.preventDefault();
 
@@ -115,6 +116,14 @@ const MyCourseDetail = ({ data }) => {
       .catch((err) => toast.error("Please fill in chapter name"));
   }
 
+  function deleteChapter(e) {
+    chapters
+      .delete(e)
+      .then(history.go())
+      .catch((err) => toast.error(err?.response?.data?.message));
+  }
+
+  //? Lessons Function ?//
   function submitLesson(e) {
     e.preventDefault();
 
@@ -122,6 +131,13 @@ const MyCourseDetail = ({ data }) => {
       .create(lesson)
       .then((res) => history.go())
       .catch((err) => toast.error("Please fill in all field"));
+  }
+
+  function deleteLesson(e) {
+    lessons
+      .delete(e)
+      .then(history.go())
+      .catch((err) => toast.error(err?.response?.data?.message));
   }
 
   function deleteClass() {
@@ -213,14 +229,25 @@ const MyCourseDetail = ({ data }) => {
         >
           Add Chapter
         </Button>
-        <Button onClick={() => setmodalVideo(true)}>Add Videos</Button>
+        <Button onClick={() => setmodalVideo(true)}>Add Lesson</Button>
 
         <Container>
           <div className="col">
             <h1>Chapters</h1>
             <ul>
               {data?.chapter?.map((item, index) => {
-                return <li key={index}>{item.name}</li>;
+                return (
+                  <li key={index}>
+                    <Button
+                      onClick={() => deleteChapter(item.id)}
+                      remove
+                      style={{ marginRight: "20px" }}
+                    >
+                      X
+                    </Button>
+                    {item.name}
+                  </li>
+                );
               })}
             </ul>
           </div>
@@ -229,7 +256,18 @@ const MyCourseDetail = ({ data }) => {
             <ul>
               {data?.chapter?.map((item) => {
                 return item?.lesson.map((lesson, index) => {
-                  return <li key={index}>{lesson.name}</li>;
+                  return (
+                    <li key={index}>
+                      <Button
+                        onClick={() => deleteLesson(item.id)}
+                        remove
+                        style={{ marginRight: "20px" }}
+                      >
+                        X
+                      </Button>
+                      {lesson.name}
+                    </li>
+                  );
                 });
               })}
             </ul>
