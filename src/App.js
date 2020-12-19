@@ -10,7 +10,7 @@ import { populateProfile } from "store/actions/users";
 import { MemberRoute, GuestRoute } from "components";
 import { Login, Register, RegisterMentor } from "./pages";
 import { Unauthenticated, NotFound, Joined } from "./pages";
-import { MyProgressPage, CoursePage, MyClassPage, SettingsPage } from "./pages";
+import { CoursePage, MyClassPage, SettingsPage } from "./pages";
 import { ToolsPage, ToolDetailsPage, MyCoursesPage } from "./pages";
 import { MyCourseDetailsPage, TransactionPage, FlowPage } from "./pages";
 import { FlowDetailsPage, UserPage, UserDetailsPage } from "./pages";
@@ -47,7 +47,7 @@ function App() {
             component={CoursePage}
           />
           <MemberRoute path="/courses/:class/" component={CoursePage} />
-          <MemberRoute path="/my-progress" component={MyProgressPage} />
+          {/* <MemberRoute path="/my-progress" component={MyProgressPage} /> */}
 
           <MemberRoute exact path="/class" component={MyCoursesPage} />
           <MemberRoute path="/class/:slug" component={MyCourseDetailsPage} />
