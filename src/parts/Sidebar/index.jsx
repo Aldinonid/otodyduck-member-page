@@ -8,7 +8,7 @@ import { Avatar, Gap } from "components";
 import { SidebarWrapper, AvatarFrame, MainMenu, Footer } from "./Sidebar";
 
 const Sidebar = ({ history, match }) => {
-  const user = useSelector((state) => state.users);
+  const USERS = useSelector((state) => state.users.data);
   const paramsPath = `/${match?.path?.split("/")[1]}`;
 
   const getNavLinkClass = (path) => {
@@ -33,21 +33,21 @@ const Sidebar = ({ history, match }) => {
       <Gap height={32} />
       <AvatarFrame>
         <div className="frame">
-          <Avatar user={user} />
+          <Avatar user={USERS} />
         </div>
-        <h3>{user ? user?.name : "User Name"}</h3>
-        <p>{user ? user?.job : "User Occupation"}</p>
+        <h3>{USERS?.name ?? "User Name"}</h3>
+        <p>{USERS?.job ?? "User Occupation"}</p>
       </AvatarFrame>
       <Gap height={50} />
       <MainMenu>
-        <li>
+        {/* <li>
           <Link
             to="/my-progress"
             className={`nav-link ${getNavLinkClass("/my-progress")}`}
           >
             My Progress
           </Link>
-        </li>
+        </li> */}
 
         <li>
           <Link to="/" className={`nav-link ${getNavLinkClass("/")}`}>
@@ -75,7 +75,7 @@ const Sidebar = ({ history, match }) => {
           </Link>
         </li>
 
-        {user?.role === "teacher" ? (
+        {USERS?.role !== "student" ? (
           <>
             <li>
               <Link
@@ -103,6 +103,17 @@ const Sidebar = ({ history, match }) => {
                 Flow Learn
               </Link>
             </li>
+
+            {USERS?.role === "admin" && (
+              <li>
+                <Link
+                  to="/users"
+                  className={`nav-link ${getNavLinkClass("/users")}`}
+                >
+                  User Management
+                </Link>
+              </li>
+            )}
           </>
         ) : (
           ""
@@ -118,7 +129,6 @@ const Sidebar = ({ history, match }) => {
         </li>
       </MainMenu>
 
-      {/* TODO : Logout pake button, jadi nanti buat onclick logoutnya */}
       <Footer onClick={logout}>Logout</Footer>
     </SidebarWrapper>
   );

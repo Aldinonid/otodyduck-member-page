@@ -55,6 +55,7 @@ const SettingForm = ({ details }) => {
       email: state.email,
       password: state.password,
       job: state.job,
+      role: details?.role,
     };
 
     if (payload.job === "others") payload.job = state.otherJob;

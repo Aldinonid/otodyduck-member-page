@@ -12,6 +12,8 @@ import MyCourseDetailsPage from "./MyCourseDetailsPage";
 import ToolsPage from "./ToolsPage";
 import ToolDetailsPage from "./ToolDetailsPage";
 import SettingsPage from "./SettingsPage";
+import UserPage from "./UserPage";
+import UserDetailsPage from "./UserDetailsPage";
 import Joined from "./Joined";
 import Unauthenticated from "./401";
 import NotFound from "./404";
@@ -32,6 +34,8 @@ export {
   ToolsPage,
   ToolDetailsPage,
   SettingsPage,
+  UserPage,
+  UserDetailsPage,
   Joined,
   Unauthenticated,
   NotFound,

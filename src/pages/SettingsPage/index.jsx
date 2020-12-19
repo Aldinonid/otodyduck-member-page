@@ -18,7 +18,7 @@ export default function SettingsPage() {
   return (
     <Wrapper>
       <Sidebar />
-      <SettingForm details={USERS} />
+      <SettingForm details={USERS.data} />
     </Wrapper>
   );
 }

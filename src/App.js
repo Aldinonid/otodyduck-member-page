@@ -13,7 +13,7 @@ import { Unauthenticated, NotFound, Joined } from "./pages";
 import { MyProgressPage, CoursePage, MyClassPage, SettingsPage } from "./pages";
 import { ToolsPage, ToolDetailsPage, MyCoursesPage } from "./pages";
 import { MyCourseDetailsPage, TransactionPage, FlowPage } from "./pages";
-import { FlowDetailsPage } from "./pages";
+import { FlowDetailsPage, UserPage, UserDetailsPage } from "./pages";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +59,9 @@ function App() {
           <MemberRoute path="/journey/:slug" component={FlowDetailsPage} />
 
           <MemberRoute path="/orders" component={TransactionPage} />
+
+          <MemberRoute exact path="/users" component={UserPage} />
+          <MemberRoute path="/users/:id" component={UserDetailsPage} />
 
           <MemberRoute path="/settings" component={SettingsPage} />
 

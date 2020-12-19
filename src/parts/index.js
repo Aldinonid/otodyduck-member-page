@@ -13,6 +13,8 @@ import MyCourses from "./MyCourses";
 import MyCourseDetail from "./MyCourseDetail";
 import Tools from "./Tools";
 import ToolDetail from "./ToolDetail";
+import Users from "./Users";
+import UserDetail from "./UserDetail";
 
 export {
   Sidebar,
@@ -30,4 +32,6 @@ export {
   MyCourseDetail,
   Tools,
   ToolDetail,
+  Users,
+  UserDetail,
 };

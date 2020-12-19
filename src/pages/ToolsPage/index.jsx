@@ -18,7 +18,7 @@ const ToolsPage = ({ history }) => {
   const USER = useSelector((state) => state.users);
   const TOOLS = useSelector((state) => state.tools);
 
-  if (USER?.role === "student") {
+  if (USER.data?.role === "student") {
     history.push("/");
   }
 

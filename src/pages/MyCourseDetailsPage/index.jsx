@@ -19,7 +19,7 @@ const MyCourseDetailsPage = ({ history }) => {
   const TOOLS = useSelector((state) => state.tools);
   const USER = useSelector((state) => state.users);
 
-  if (USER?.role === "student") {
+  if (USER.data?.role === "student") {
     history.push("/");
   }
 

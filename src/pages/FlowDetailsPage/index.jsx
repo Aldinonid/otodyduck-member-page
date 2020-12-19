@@ -20,7 +20,7 @@ const FlowDetailsPage = ({ history }) => {
   const FLOWS = useSelector((state) => state.flows);
   const CLASSES = useSelector((state) => state.classes);
 
-  if (USER?.role === "student") {
+  if (USER.data?.role === "student") {
     history.push("/");
   }
 

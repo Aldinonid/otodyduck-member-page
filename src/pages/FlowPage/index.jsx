@@ -17,7 +17,7 @@ const FlowPage = ({ history }) => {
   const USER = useSelector((state) => state.users);
   const FLOWS = useSelector((state) => state.flows);
 
-  if (USER?.role === "student") {
+  if (USER.data?.role === "student") {
     history.push("/");
   }
 
