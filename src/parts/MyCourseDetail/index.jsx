@@ -245,7 +245,8 @@ const MyCourseDetail = ({ data }) => {
                     >
                       X
                     </Button>
-                    {item.name}
+                    {/* <h4>{`${index + 1}.`}</h4> */}
+                    <p>{item.name}</p>
                   </li>
                 );
               })}
@@ -265,7 +266,8 @@ const MyCourseDetail = ({ data }) => {
                       >
                         X
                       </Button>
-                      {lesson.name}
+                      {/* <h4>{`${index + 1}.`}</h4> */}
+                      <p>{lesson.name}</p>
                     </li>
                   );
                 });

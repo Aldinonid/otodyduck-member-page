@@ -169,8 +169,8 @@ const FlowDetail = ({ data }) => {
           >
             {Object.values(CLASSES?.data).map((item, index) => {
               return (
-                <option value={item.id} key={index}>
-                  {item.name}
+                <option value={item?.id} key={index}>
+                  {item?.name}
                 </option>
               );
             })}

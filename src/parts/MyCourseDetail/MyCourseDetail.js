@@ -30,6 +30,16 @@ const Container = styled.div`
     h1 {
       margin-bottom: 20px;
     }
+
+    li {
+      display: flex;
+      margin-bottom: 5px;
+      font-size: 20px;
+
+      > h4 {
+        margin-right: 10px;
+      }
+    }
   }
 `;
 

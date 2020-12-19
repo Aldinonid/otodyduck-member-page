@@ -13,7 +13,6 @@ const Wrapper = styled.section`
     list-style: none;
 
     li {
-      display: flex;
       margin-bottom: 10px;
       font-size: 20px;
     }
@@ -30,6 +29,12 @@ const Container = styled.div`
 
     h1 {
       margin-bottom: 20px;
+    }
+
+    li {
+      display: flex;
+      margin-bottom: 10px;
+      font-size: 20px;
     }
   }
 `;
