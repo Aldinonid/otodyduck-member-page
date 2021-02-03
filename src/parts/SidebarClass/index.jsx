@@ -11,6 +11,7 @@ const SidebarClass = ({ data, match, defaultUri }) => {
   };
 
   const list = [];
+  const MAX_LENGTH = 21;
   data.chapter.forEach((chapter, index) => {
     list.push(
       <li key={`${chapter.course_id}-${index}`}>
@@ -32,7 +33,9 @@ const SidebarClass = ({ data, match, defaultUri }) => {
               ].join(" ")}
               to={`/courses/${data.slug}/${chapter.id}/${lesson.video}`}
             >
-              {lesson?.name ?? "Lesson Name"}
+              {lesson?.name.length > MAX_LENGTH
+                ? lesson?.name.substring(0, MAX_LENGTH - 3) + " ..."
+                : lesson?.name}
             </Link>
           </li>
         );

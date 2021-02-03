@@ -18,6 +18,7 @@ import Joined from "./Joined";
 import Unauthenticated from "./401";
 import NotFound from "./404";
 import ServerError from "./500";
+import Certificate from "./Certificate";
 
 export {
   Login,
@@ -40,4 +41,5 @@ export {
   Unauthenticated,
   NotFound,
   ServerError,
+  Certificate,
 };

@@ -43,6 +43,7 @@ export default function CoursePage({ history, match }) {
     return <section>{COURSES?.message ?? "Error Here"}</section>;
 
   let currentChapter, currentLesson;
+  let lastChapter, lastLesson;
   if (COURSES.status === "ok" && COURSES?.data?.[match.params.class]?.chapter) {
     currentChapter =
       COURSES?.data?.[match.params.class]?.chapter?.find(
@@ -53,6 +54,9 @@ export default function CoursePage({ history, match }) {
       currentChapter?.lesson?.find(
         (lesson) => lesson.video === match.params.uid
       ) ?? currentChapter?.lesson?.[0];
+
+    lastChapter = COURSES?.data?.[match.params.class]?.chapter?.slice(-1)[0];
+    lastLesson = lastChapter?.lesson?.slice(-1)[0];
   }
 
   function nextVideo() {}
@@ -70,6 +74,7 @@ export default function CoursePage({ history, match }) {
             lessonName={currentLesson?.name}
             videoId={currentLesson?.video}
             nextVideo={nextVideo}
+            endChapter={lastLesson === currentLesson}
           />
         </>
       )}
