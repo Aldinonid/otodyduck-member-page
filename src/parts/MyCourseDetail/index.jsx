@@ -197,6 +197,9 @@ const MyCourseDetail = ({ data }) => {
             <strong>Type:</strong> {data?.type}
           </li>
           <li>
+            <strong>Level:</strong> {data?.level}
+          </li>
+          <li>
             <strong>Price:</strong> {`Rp. ${formatThousands(data?.price)}`}
           </li>
           <li>
@@ -260,7 +263,7 @@ const MyCourseDetail = ({ data }) => {
                   return (
                     <li key={index}>
                       <Button
-                        onClick={() => deleteLesson(item.id)}
+                        onClick={() => deleteLesson(lesson.id)}
                         remove
                         style={{ marginRight: "20px" }}
                       >

@@ -46,6 +46,7 @@ const FlowDetail = ({ data }) => {
   }
 
   function addCourse(e) {
+    e.preventDefault();
     const payload = {
       name: state.name,
       level: state.level,
@@ -57,7 +58,7 @@ const FlowDetail = ({ data }) => {
     flows
       .edit(state.id, payload)
       .then((res) => history.go())
-      .catch((err) => toast.error(err?.response?.data?.message));
+      .catch((err) => history.go());
   }
 
   function deleteCourse(e) {

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 
 import useForm from "helpers/hooks/useForm";
@@ -27,7 +27,7 @@ const SettingForm = ({ details }) => {
   const [state, setKey, setState] = useForm({
     name: details?.name ?? "",
     email: details?.email ?? "",
-    password: details?.password ?? "",
+    password: "",
     job: details?.job ?? "",
     otherJob: details?.otherJob ?? "",
     avatar: details?.avatar ?? "",
@@ -206,6 +206,7 @@ const SettingForm = ({ details }) => {
           <Button type="submit">Save Changes</Button>
         </InputWrapper>
       </form>
+      <ToastContainer />
     </SettingWrapper>
   );
 };
