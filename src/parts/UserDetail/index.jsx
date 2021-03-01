@@ -7,21 +7,23 @@ import useForm from "helpers/hooks/useForm";
 import { users } from "constants/api";
 
 import NoImage from "assets/images/no-image.jpg";
-import { Gap, Modal, Select } from "components";
+import { Gap, Modal, Select, Input } from "components";
 import { fetchUser } from "store/actions/users";
 import { Wrapper, Button } from "./UserDetail";
 
 const UserDetail = ({ details }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [modal, setmodal] = useState(false);
+  const [modalRole, setmodalRole] = useState(false);
+  const [modalPassword, setmodalPassword] = useState(false);
 
   const [state, setState] = useForm({
     id: details?.id,
     role: details?.role ?? "",
+    password: ""
   });
-
-  async function changeRole(e) {
+  
+  function changeRole(e) {
     e.preventDefault();
 
     const payload = {
@@ -35,7 +37,7 @@ const UserDetail = ({ details }) => {
     users.edit(state.id, payload).then((res) => {
       toast.success("User role has been changed !");
       dispatch(fetchUser(res.data));
-      setmodal(false);
+      setmodalRole(false);
     });
   }
 
@@ -43,12 +45,31 @@ const UserDetail = ({ details }) => {
     users.delete(state.id).then((res) => history.goBack());
   }
 
+  function resetPassword(e) {
+    e.preventDefault();
+    const payload = {
+      name: details?.name,
+      email: details?.email,
+      password: state.password,
+      job: details?.job,
+      role: details?.role
+    }
+
+    users.edit(details?.id, payload).then(res => {
+      toast.success("Password has been changed !")
+      dispatch(fetchUser(res.data))
+      setmodalPassword(false);
+    }).catch(err => toast.error(err?.response?.data?.message[0]?.message))
+    // }).catch(err => console.log(err?.response?.data?.message[0]?.message))
+  }
+
   return (
     <>
       <Wrapper>
         <h1 className="title">{details?.name}</h1>
         <Gap height={30} />
-        <Button onClick={() => setmodal(true)}>Change Role</Button>
+        <Button onClick={() => setmodalRole(true)}>Change Role</Button>
+        <Button onClick={() => setmodalPassword(true)} style={{ marginLeft: 20 }}>Reset Password</Button>
         <Button onClick={deleteTool} remove style={{ marginLeft: 20 }}>
           Delete User
         </Button>
@@ -75,8 +96,8 @@ const UserDetail = ({ details }) => {
       </Wrapper>
       <form onSubmit={changeRole}>
         <Modal
-          open={modal}
-          onClose={() => setmodal(false)}
+          open={modalRole}
+          onClose={() => setmodalRole(false)}
           title="Change User Role"
         >
           <Select
@@ -90,6 +111,24 @@ const UserDetail = ({ details }) => {
             <option value="teacher">Teacher</option>
             <option value="admin">Admin</option>
           </Select>
+        </Modal>
+      </form>
+      <form onSubmit={resetPassword}>
+        <Modal
+          open={modalPassword}
+          onClose={() => setmodalPassword(false)}
+          title="Change User Password"
+        >
+
+          <Input
+            name="password"
+            type="password"
+            onChange={setState}
+            value={state.password}
+            placeholder="Type User Password"
+            labelName="Password"
+          />
+
         </Modal>
       </form>
       <ToastContainer />
