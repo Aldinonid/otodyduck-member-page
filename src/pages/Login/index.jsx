@@ -1,5 +1,6 @@
 import React from "react";
 import { Fade } from "react-reveal";
+import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 
 import { setAuthorizationHeader } from "configs/axios";
@@ -105,6 +106,7 @@ const Login = ({ history }) => {
           </LinkToRegister>
         </Fade>
       </LoginWrapper>
+      <ToastContainer/>
     </Container>
   );
 };
